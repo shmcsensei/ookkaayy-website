@@ -1,0 +1,1 @@
+{ "plugins": ["typescript", "react", "react-perf"], "categories": { "correctness": "error" } }
