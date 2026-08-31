@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import { test } from 'node:test';
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
@@ -48,6 +48,19 @@ test('crawl metadata and canonical URLs are generated', async () => {
   for (const route of ['/wiki', '/search', '/version', '/compare', '/docs', '/downloads', '/about'])
     assert.match(sitemap, new RegExp(route));
   assert.match(robots, /sitemap\.xml/);
+});
+
+test('every product page uses a recent authentic interface capture with useful alt text', async () => {
+  const products = await read('lib/products.ts');
+  const component = await read('components/product-page.tsx');
+  for (const product of ['wiki', 'search', 'version']) {
+    assert.match(products, new RegExp(`/screenshots/${product}\\.jpg`));
+    const image = await stat(new URL(`../public/screenshots/${product}.jpg`, import.meta.url));
+    assert.ok(image.size > 40_000, `${product} screenshot should contain a real interface capture`);
+  }
+  assert.equal((products.match(/verifiedAt: '2026-08-31'/g) ?? []).length, 3);
+  assert.match(component, /alt=\{item\.screenshot\.alt\}/);
+  assert.match(component, /This is the product UI—not a marketing reconstruction/);
 });
 
 test('privacy and accessibility foundations remain present', async () => {

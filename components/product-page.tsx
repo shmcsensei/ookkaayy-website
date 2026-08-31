@@ -46,6 +46,32 @@ export function ProductPage({ product }: Readonly<{ product: ProductKey }>) {
           </div>
         </div>
       </section>
+      <section className="product-proof shell" aria-labelledby={`${product}-proof`}>
+        <div className="proof-heading">
+          <div>
+            <p className="kicker">Verified interface</p>
+            <h2 id={`${product}-proof`}>{item.name}, working on real Markdown.</h2>
+          </div>
+          <p>
+            Captured from the local v0.1 development build on{' '}
+            <time dateTime={item.screenshot.verifiedAt}>{item.screenshot.verifiedAt}</time>.
+          </p>
+        </div>
+        <figure className="product-shot">
+          <img
+            src={item.screenshot.src}
+            alt={item.screenshot.alt}
+            width="1280"
+            height="720"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            This is the product UI—not a marketing reconstruction. The example collection is shared
+            across Wiki, Search, and Version.
+          </figcaption>
+        </figure>
+      </section>
       <section className="scope shell">
         <p className="kicker">Clear responsibility</p>
         <h2>{item.scope}</h2>

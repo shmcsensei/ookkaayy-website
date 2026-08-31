@@ -20,6 +20,11 @@ export const products = {
     ],
     scope: 'Wiki owns current content. It does not own Git history or enhanced retrieval indexes.',
     port: '43111',
+    screenshot: {
+      src: '/screenshots/wiki.jpg',
+      alt: 'Ookkaayy Wiki showing the Project Atlas Markdown preview, typed properties, backlinks, and page navigation.',
+      verifiedAt: '2026-08-31',
+    },
   },
   search: {
     name: 'Search',
@@ -43,6 +48,11 @@ export const products = {
     scope:
       'Search reads current Markdown and never edits it. It does not synchronize content or history.',
     port: '43110',
+    screenshot: {
+      src: '/screenshots/search.jpg',
+      alt: 'Ookkaayy Search showing ranked local-first results from headings and full Markdown pages.',
+      verifiedAt: '2026-08-31',
+    },
   },
   version: {
     name: 'Version',
@@ -66,6 +76,11 @@ export const products = {
     scope:
       'Version owns history. It edits the working tree only for explicit restore, conflict resolution, or synchronization.',
     port: '43112',
+    screenshot: {
+      src: '/screenshots/version.jpg',
+      alt: 'Ookkaayy Version showing a saved version with a rendered Markdown-aware comparison and exact source disclosure.',
+      verifiedAt: '2026-08-31',
+    },
   },
 } as const;
 export type ProductKey = keyof typeof products;
