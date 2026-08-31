@@ -615,6 +615,14 @@ a:focus-visible {
   color: var(--muted);
   font-size: 11px;
 }
+.checksum {
+  display: block;
+  margin-top: 8px;
+  max-width: 250px;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 10px;
+}
 .release-bottom {
   display: grid;
   grid-template-columns: 1fr 1fr;

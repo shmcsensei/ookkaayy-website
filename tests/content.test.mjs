@@ -28,6 +28,8 @@ test('downloads distinguish local artifacts from stable releases', async () => {
     assert.match(releases, new RegExp(`product: '${product}'`));
   assert.match(releases, /built locally/);
   assert.match(downloads, /not notarized, signed, or automatically updated/);
+  assert.equal((releases.match(/sha256: '[a-f0-9]{64}'/g) ?? []).length, 3);
+  assert.equal((releases.match(/sizeBytes: [1-9][0-9]+/g) ?? []).length, 3);
 });
 
 test('documentation is searchable, filterable, and identifies security boundaries', async () => {
@@ -38,6 +40,9 @@ test('documentation is searchable, filterable, and identifies security boundarie
   assert.match(explorer, /role="status"/);
   for (const topic of ['MCP', 'loopback', 'restore', 'sync authority'])
     assert.match(docs, new RegExp(topic, 'i'));
+  for (const topic of ['three-way', 'Git credential', '/api/v1', 'doctor', 'automatic protection'])
+    assert.match(docs, new RegExp(topic, 'i'));
+  assert.equal((docs.match(/id: '/g) ?? []).length, 16);
 });
 
 test('crawl metadata and canonical URLs are generated', async () => {

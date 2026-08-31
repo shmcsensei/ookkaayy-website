@@ -7,6 +7,8 @@ export type ReleaseArtifact = {
   status: 'built locally' | 'build from source';
   location?: string;
   requirements: string;
+  sizeBytes?: number;
+  sha256?: string;
 };
 
 export type ProductRelease = {
@@ -24,7 +26,7 @@ export const releases: readonly ProductRelease[] = [
     product: 'wiki',
     version: '0.1.0',
     channel: 'development',
-    revision: '65d84f0',
+    revision: '3bfcc6e',
     builtOn: '2026-08-31',
     notes: [
       'Native desktop workspace',
@@ -39,6 +41,8 @@ export const releases: readonly ProductRelease[] = [
         status: 'built locally',
         location: '../ookkaayy-wiki/target/release/bundle/dmg/Ookkaayy Wiki_0.1.0_aarch64.dmg',
         requirements: 'macOS 11 or newer',
+        sizeBytes: 9088891,
+        sha256: '5df87a389437aa597b3709fba6eaef06cc71e25138d3a7bac3461c36932073ce',
       },
       {
         kind: 'source',
@@ -54,16 +58,18 @@ export const releases: readonly ProductRelease[] = [
     version: '0.1.0',
     channel: 'development',
     revision: 'ce7654b',
-    builtOn: '2026-08-30',
+    builtOn: '2026-08-31',
     notes: ['Native desktop search', 'Durable background indexing', 'Typed and date-aware filters'],
     artifacts: [
       {
-        kind: 'app',
+        kind: 'dmg',
         platform: 'macOS',
         architecture: 'Apple silicon',
         status: 'built locally',
-        location: '../ookkaayy-search/target/release/bundle/macos/Ookkaayy Search.app',
+        location: '../ookkaayy-search/target/release/bundle/dmg/Ookkaayy Search_0.1.0_aarch64.dmg',
         requirements: 'macOS 11 or newer',
+        sizeBytes: 8062758,
+        sha256: '25fbe0a5d576aa4f4f244530fd97e0411c0c06781a65989c6dd51457bdd9826d',
       },
       {
         kind: 'source',
@@ -78,8 +84,8 @@ export const releases: readonly ProductRelease[] = [
     product: 'version',
     version: '0.1.0',
     channel: 'development',
-    revision: '5bfa578',
-    builtOn: '2026-08-30',
+    revision: '373527c',
+    builtOn: '2026-08-31',
     notes: [
       'Native desktop history',
       'Rendered Markdown comparisons',
@@ -94,6 +100,8 @@ export const releases: readonly ProductRelease[] = [
         location:
           '../ookkaayy-versions/target/release/bundle/dmg/Ookkaayy Version_0.1.0_aarch64.dmg',
         requirements: 'macOS 11 or newer',
+        sizeBytes: 7986099,
+        sha256: 'f5261bbf043d9ee774b85c62c178c4464469b12b8b705fb787dca234fc2a99c2',
       },
       {
         kind: 'source',
