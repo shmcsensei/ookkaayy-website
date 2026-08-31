@@ -26,7 +26,7 @@ export const releases: readonly ProductRelease[] = [
     product: 'wiki',
     version: '0.1.0',
     channel: 'development',
-    revision: '3bfcc6e',
+    revision: '5f66cbd',
     builtOn: '2026-08-31',
     notes: [
       'Native desktop workspace',
@@ -41,8 +41,8 @@ export const releases: readonly ProductRelease[] = [
         status: 'built locally',
         location: '../ookkaayy-wiki/target/release/bundle/dmg/Ookkaayy Wiki_0.1.0_aarch64.dmg',
         requirements: 'macOS 11 or newer',
-        sizeBytes: 9088891,
-        sha256: '5df87a389437aa597b3709fba6eaef06cc71e25138d3a7bac3461c36932073ce',
+        sizeBytes: 9088925,
+        sha256: 'ec1d25c7958ac0c7f6ae1af16ee615494af479f6ef80ed3cd4c4a4c7bf1ac3ae',
       },
       {
         kind: 'source',
@@ -84,7 +84,7 @@ export const releases: readonly ProductRelease[] = [
     product: 'version',
     version: '0.1.0',
     channel: 'development',
-    revision: '373527c',
+    revision: 'f3be952',
     builtOn: '2026-08-31',
     notes: [
       'Native desktop history',
@@ -100,8 +100,8 @@ export const releases: readonly ProductRelease[] = [
         location:
           '../ookkaayy-versions/target/release/bundle/dmg/Ookkaayy Version_0.1.0_aarch64.dmg',
         requirements: 'macOS 11 or newer',
-        sizeBytes: 7986099,
-        sha256: 'f5261bbf043d9ee774b85c62c178c4464469b12b8b705fb787dca234fc2a99c2',
+        sizeBytes: 7986088,
+        sha256: '1b6b2e59e4705ef0af4f0a0e20e26b993dbb0438b70bd1af8633e619a6f6ff60',
       },
       {
         kind: 'source',
