@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: { default: 'Ookkaayy — Own your Markdown', template: '%s · Ookkaayy' },
   description:
     'Write, find, and protect your knowledge as ordinary Markdown with local-first tools that work offline.',
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'Ookkaayy',
     description: 'Write · Find · Protect your Markdown',
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
     description: 'Write · Find · Protect your Markdown',
     images: ['/og.png'],
   },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
