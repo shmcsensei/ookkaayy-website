@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { sitePolicy } from '../lib/site-policy';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang={sitePolicy.defaultLocale}>
       <body>{children}</body>
     </html>
   );

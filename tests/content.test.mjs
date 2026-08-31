@@ -72,8 +72,21 @@ test('privacy and accessibility foundations remain present', async () => {
   const layout = await read('app/layout.tsx');
   const styles = await read('app/globals.css');
   const site = await read('components/site.tsx');
-  assert.match(layout, /lang="en"/);
+  assert.match(layout, /sitePolicy\.defaultLocale/);
   assert.match(site, /Skip to content/);
   assert.match(styles, /prefers-reduced-motion/);
   assert.match(layout, /og\.png/);
+});
+
+test('operational policy is executable and owned', async () => {
+  const policy = await read('lib/site-policy.ts');
+  const operations = await read('OPERATIONS.md');
+  const packageJson = await read('package.json');
+  const headers = await read('public/_headers');
+  assert.match(policy, /defaultLocale: 'en'/);
+  assert.match(policy, /contentOwners/);
+  assert.match(policy, /performanceBudgets/);
+  assert.match(operations, /Atomic rollout and rollback/);
+  assert.match(packageJson, /audit-production-build/);
+  assert.match(headers, /Content-Security-Policy/);
 });
