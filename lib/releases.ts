@@ -26,7 +26,7 @@ export const releases: readonly ProductRelease[] = [
     product: 'wiki',
     version: '0.1.0',
     channel: 'development',
-    revision: '5f66cbd',
+    revision: '605b0d5',
     builtOn: '2026-08-31',
     notes: [
       'Native desktop workspace',
@@ -41,8 +41,8 @@ export const releases: readonly ProductRelease[] = [
         status: 'built locally',
         location: '../ookkaayy-wiki/target/release/bundle/dmg/Ookkaayy Wiki_0.1.0_aarch64.dmg',
         requirements: 'macOS 11 or newer',
-        sizeBytes: 9088925,
-        sha256: 'ec1d25c7958ac0c7f6ae1af16ee615494af479f6ef80ed3cd4c4a4c7bf1ac3ae',
+        sizeBytes: 9092836,
+        sha256: 'f957831e0b93881a9d3d3672c743c9d28c9f8c8387af9c765cf6cf69a254494d',
       },
       {
         kind: 'source',
