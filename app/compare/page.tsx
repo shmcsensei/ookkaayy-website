@@ -1,5 +1,7 @@
+import type { Metadata } from 'next';
 import { Page } from '@/components/site';
 import { products } from '@/lib/products';
+export const metadata: Metadata = { title: 'Compare', alternates: { canonical: '/compare' } };
 const rows = [
   ['Create and edit Markdown', 'Yes', 'No — read only', 'Only during restore/sync'],
   ['Local full-text search', 'Built in', 'Advanced retrieval', 'No'],

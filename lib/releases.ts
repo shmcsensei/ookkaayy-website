@@ -16,6 +16,7 @@ export type ProductRelease = {
   version: string;
   channel: 'development';
   revision: string;
+  sourceUrl: string;
   builtOn: string;
   notes: readonly string[];
   artifacts: readonly ReleaseArtifact[];
@@ -27,6 +28,7 @@ export const releases: readonly ProductRelease[] = [
     version: '0.1.0',
     channel: 'development',
     revision: '605b0d5',
+    sourceUrl: 'https://github.com/shmcsensei/ookkaayy-wiki',
     builtOn: '2026-08-31',
     notes: [
       'Native desktop workspace',
@@ -58,6 +60,7 @@ export const releases: readonly ProductRelease[] = [
     version: '0.1.0',
     channel: 'development',
     revision: 'ce7654b',
+    sourceUrl: 'https://github.com/shmcsensei/ookkaayy-search',
     builtOn: '2026-08-31',
     notes: ['Native desktop search', 'Durable background indexing', 'Typed and date-aware filters'],
     artifacts: [
@@ -85,6 +88,7 @@ export const releases: readonly ProductRelease[] = [
     version: '0.1.0',
     channel: 'development',
     revision: 'f3be952',
+    sourceUrl: 'https://github.com/shmcsensei/ookkaayy-versions',
     builtOn: '2026-08-31',
     notes: [
       'Native desktop history',

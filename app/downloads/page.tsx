@@ -6,6 +6,7 @@ import { releases, repositoryDirectory } from '@/lib/releases';
 export const metadata: Metadata = {
   title: 'Downloads',
   description: 'Verified local development builds and source instructions for Ookkaayy.',
+  alternates: { canonical: '/downloads' },
 };
 
 export default function Downloads() {
@@ -99,8 +100,10 @@ export default function Downloads() {
                 <div>
                   <h3>Build from source</h3>
                   <pre>
-                    <code>{`cd ${repositoryDirectory(release.product)}\ncargo test --all-targets\ncargo tauri build`}</code>
+                    <code>{`cd ${repositoryDirectory(release.product)}\ncargo test --all-targets\ncd desktop/src-tauri\ncargo tauri build --bundles app --no-sign`}</code>
                   </pre>
+                  <a href={release.sourceUrl}>Open the {product.name} source repository →</a>
+                  <br />
                   <a href={`/docs#${release.product}-first-run`}>Read the first-run guide →</a>
                 </div>
               </div>

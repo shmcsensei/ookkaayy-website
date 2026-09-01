@@ -16,11 +16,11 @@ export const guides: readonly Guide[] = [
     product: 'suite',
     title: 'Install the suite',
     summary: 'Build every product and open the native applications locally.',
-    command: 'cargo tauri build',
+    command: 'cd desktop/src-tauri\ncargo tauri build --bundles app --no-sign',
     steps: [
       'Install Rust 1.98+ and Node.js 22+',
       'Clone the four sibling repositories into one parent folder',
-      'Build each desktop crate with cargo tauri build',
+      'From each repository, enter desktop/src-tauri and run cargo tauri build --bundles app --no-sign',
       'Open Wiki and enable Search or Version only for the folders that need them',
     ],
     note: 'Core use is offline. A network connection is only needed while installing dependencies.',
@@ -99,8 +99,8 @@ export const guides: readonly Guide[] = [
     steps: [
       'The browser UI binds to loopback by default',
       'Non-loopback bindings are refused without authentication',
-      'Automation endpoints require an explicit bearer token',
-      'Use a reverse proxy with TLS for any intentionally remote deployment',
+      'Loopback APIs are unauthenticated by default and rely on operating-system access controls',
+      'Non-loopback bindings require a bearer token; use a reverse proxy with TLS for intentional remote deployment',
     ],
   },
   {

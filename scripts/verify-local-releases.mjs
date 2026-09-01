@@ -22,10 +22,20 @@ const sha256 = (file) =>
 
 for (const release of releases) {
   const repository = path.resolve(root, '..', repositoryDirectory(release.product));
-  const { stdout } = await exec('git', ['rev-parse', '--short', 'HEAD'], { cwd: repository });
-  if (stdout.trim() !== release.revision) {
+  const [{ stdout: shortRevision }, { stdout: fullRevision }, { stdout: status }] =
+    await Promise.all([
+      exec('git', ['rev-parse', '--short', 'HEAD'], { cwd: repository }),
+      exec('git', ['rev-parse', 'HEAD'], { cwd: repository }),
+      exec('git', ['status', '--porcelain=v1', '--untracked-files=all'], { cwd: repository }),
+    ]);
+  if (shortRevision.trim() !== release.revision) {
     throw new Error(
-      `${release.product}: manifest revision ${release.revision} does not match ${stdout.trim()}`,
+      `${release.product}: manifest revision ${release.revision} does not match ${shortRevision.trim()}`,
+    );
+  }
+  if (status.trim()) {
+    throw new Error(
+      `${release.product}: source tree ${fullRevision.trim()} is dirty; local artifacts cannot claim clean revision provenance`,
     );
   }
   for (const artifact of release.artifacts.filter((value) => value.status === 'built locally')) {

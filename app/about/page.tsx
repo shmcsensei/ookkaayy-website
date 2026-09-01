@@ -1,4 +1,6 @@
+import type { Metadata } from 'next';
 import { Page } from '@/components/site';
+export const metadata: Metadata = { title: 'About', alternates: { canonical: '/about' } };
 export default function About() {
   return (
     <Page>

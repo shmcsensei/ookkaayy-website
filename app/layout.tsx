@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   title: { default: 'Ookkaayy — Own your Markdown', template: '%s · Ookkaayy' },
   description:
     'Write, find, and protect your knowledge as ordinary Markdown with local-first tools that work offline.',
-  alternates: { canonical: '/' },
   openGraph: {
     title: 'Ookkaayy',
     description: 'Write · Find · Protect your Markdown',

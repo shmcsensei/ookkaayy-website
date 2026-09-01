@@ -46,13 +46,37 @@ test('documentation is searchable, filterable, and identifies security boundarie
 });
 
 test('crawl metadata and canonical URLs are generated', async () => {
-  const layout = await read('app/layout.tsx');
+  const home = await read('app/page.tsx');
   const sitemap = await read('app/sitemap.ts');
   const robots = await read('app/robots.ts');
-  assert.match(layout, /alternates: \{ canonical: '\/' \}/);
-  for (const route of ['/wiki', '/search', '/version', '/compare', '/docs', '/downloads', '/about'])
+  assert.match(home, /alternates: \{ canonical: '\/' \}/);
+  for (const route of [
+    '/wiki',
+    '/search',
+    '/version',
+    '/compare',
+    '/docs',
+    '/downloads',
+    '/about',
+  ]) {
     assert.match(sitemap, new RegExp(route));
+    const page = await read(`app${route}/page.tsx`);
+    assert.match(page, new RegExp(`canonical: '${route}'`));
+  }
   assert.match(robots, /sitemap\.xml/);
+});
+
+test('installation and release provenance paths are actionable and exact', async () => {
+  const downloads = await read('app/downloads/page.tsx');
+  const docs = await read('lib/docs.ts');
+  const releases = await read('lib/releases.ts');
+  const verifier = await read('scripts/verify-local-releases.mjs');
+  assert.match(downloads, /cd desktop\/src-tauri/);
+  assert.match(docs, /desktop\/src-tauri/);
+  assert.equal((releases.match(/sourceUrl: 'https:\/\/github\.com\//g) ?? []).length, 3);
+  assert.match(downloads, /release\.sourceUrl/);
+  assert.match(verifier, /status.*--porcelain/s);
+  assert.match(verifier, /source tree.*is dirty/);
 });
 
 test('every product page uses a recent authentic interface capture with useful alt text', async () => {

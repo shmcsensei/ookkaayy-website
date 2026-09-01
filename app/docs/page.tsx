@@ -6,6 +6,7 @@ import { guides } from '@/lib/docs';
 export const metadata: Metadata = {
   title: 'Documentation',
   description: 'Install, configure, integrate, and recover Ookkaayy local-first Markdown tools.',
+  alternates: { canonical: '/docs' },
 };
 
 export default function Docs() {
