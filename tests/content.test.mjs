@@ -106,11 +106,13 @@ test('operational policy is executable and owned', async () => {
   const policy = await read('lib/site-policy.ts');
   const operations = await read('OPERATIONS.md');
   const packageJson = await read('package.json');
-  const headers = await read('public/_headers');
+  const workflow = await read('.github/workflows/deploy-pages.yml');
+  const nextConfig = await read('next.config.ts');
   assert.match(policy, /defaultLocale: 'en'/);
   assert.match(policy, /contentOwners/);
   assert.match(policy, /performanceBudgets/);
   assert.match(operations, /Atomic rollout and rollback/);
   assert.match(packageJson, /audit-production-build/);
-  assert.match(headers, /Content-Security-Policy/);
+  assert.match(workflow, /actions\/deploy-pages/);
+  assert.match(nextConfig, /output: 'export'/);
 });

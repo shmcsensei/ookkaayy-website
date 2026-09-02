@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Link from 'next/link';
 export function Header() {
   return (
     <>
@@ -7,18 +8,18 @@ export function Header() {
       </a>
       <header className="site-header">
         <nav className="nav shell" aria-label="Main navigation">
-          <a className="logo" href="/">
+          <Link className="logo" href="/">
             ookkaayy<span>.</span>
-          </a>
+          </Link>
           <div className="nav-links">
-            <a href="/wiki">Wiki</a>
-            <a href="/search">Search</a>
-            <a href="/version">Version</a>
-            <a href="/compare">Compare</a>
-            <a href="/docs">Docs</a>
-            <a className="button" href="/downloads">
+            <Link href="/wiki">Wiki</Link>
+            <Link href="/search">Search</Link>
+            <Link href="/version">Version</Link>
+            <Link href="/compare">Compare</Link>
+            <Link href="/docs">Docs</Link>
+            <Link className="button" href="/downloads">
               Download
-            </a>
+            </Link>
           </div>
         </nav>
       </header>
@@ -31,8 +32,8 @@ export function Footer() {
       <div className="shell">
         <span>© 2026 Ookkaayy</span>
         <nav aria-label="Footer">
-          <a href="/about">About</a> · <a href="/docs">Documentation</a> ·{' '}
-          <a href="/downloads">Downloads</a>
+          <Link href="/about">About</Link> · <Link href="/docs">Documentation</Link> ·{' '}
+          <Link href="/downloads">Downloads</Link>
         </nav>
       </div>
     </footer>

@@ -2,11 +2,11 @@
 
 Reviewed: 2026-08-31
 
-Scope: all Next/Vinext application code, components, content models, release metadata, build/audit scripts, headers, tests, operational documentation, and `product_design.md`. Lockfiles and binary screenshots/images were treated as dependency or asset surfaces. This report now records the remediation completed after the review.
+Scope: all application code, components, content models, release metadata, build/audit scripts, tests, operational documentation, and `product_design.md`. Lockfiles and binary screenshots/images were treated as dependency or asset surfaces. This report records the remediation completed after the review; the site was subsequently converted to a static GitHub Pages export.
 
 ## Summary
 
-The site is static-first, uses local assets, has no trackers or account/data backend, emits restrictive security headers, escapes content through React, includes a reduced-motion rule and skip links, and centralizes core product facts. The 8 content tests and Oxlint pass.
+The site is fully static, uses local assets, has no trackers or account/data backend, escapes content through React, includes a reduced-motion rule and skip links, and centralizes core product facts. GitHub Pages controls response headers; the application itself has no request-time server layer. The content tests and Oxlint pass.
 
 All five findings are resolved. Every route has its own canonical URL; Tauri commands match repository layout; release verification checks exact revisions and rejects dirty source trees; downloads provide actionable source links and accurate build guidance; and loopback authentication documentation matches product defaults.
 
@@ -62,7 +62,7 @@ Recommendation: state that loopback is unauthenticated by default and that a bea
 
 - `npm test`: 9 passed, 0 failed.
 - `npm run lint`: passed with no reported diagnostics.
-- `npm run build`: passed; all 8 expected routes were emitted.
-- `npm run audit`: passed (8 routes, 390,470 B JavaScript, 17,069 B CSS).
+- `npm run build`: passed; all 8 expected routes were emitted as static HTML.
+- `npm run audit`: passed and verifies project-subpath links, required static files, and compressed asset budgets.
 - Local release verification was not used as evidence because it depends on sibling build artifacts; the script and its asserted provenance behavior were reviewed directly.
 - No live browser WCAG 2.2 AA or external link crawl was available; accessibility and link checks in this repository are largely source-pattern/build assertions rather than end-to-end audits.

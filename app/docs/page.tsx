@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { DocsExplorer } from '@/components/docs-explorer';
 import { Page } from '@/components/site';
 import { guides } from '@/lib/docs';
@@ -30,12 +31,12 @@ export default function Docs() {
           Markdown as the source of truth.
         </p>
         <div className="actions">
-          <a className="button secondary" href="/compare">
+          <Link className="button secondary" href="/compare">
             Review product ownership
-          </a>
-          <a className="button secondary" href="/downloads">
+          </Link>
+          <Link className="button secondary" href="/downloads">
             Check local builds
-          </a>
+          </Link>
         </div>
       </section>
     </Page>

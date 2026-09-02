@@ -1,5 +1,7 @@
 import { Page } from './site';
 import { products, type ProductKey } from '@/lib/products';
+import { sitePath } from '@/lib/paths';
+import Link from 'next/link';
 export function ProductPage({ product }: Readonly<{ product: ProductKey }>) {
   const item = products[product];
   return (
@@ -14,12 +16,12 @@ export function ProductPage({ product }: Readonly<{ product: ProductKey }>) {
         <h1>{item.promise}</h1>
         <p className="hero-copy">{item.description}</p>
         <div className="actions">
-          <a className="button" href={`/downloads#${product}`}>
+          <Link className="button" href={`/downloads#${product}`}>
             Run {item.name} locally
-          </a>
-          <a className="button secondary" href={`/docs#${product}`}>
+          </Link>
+          <Link className="button secondary" href={`/docs#${product}`}>
             Read the guide
-          </a>
+          </Link>
         </div>
       </section>
       <section className="content-section">
@@ -59,7 +61,7 @@ export function ProductPage({ product }: Readonly<{ product: ProductKey }>) {
         </div>
         <figure className="product-shot">
           <img
-            src={item.screenshot.src}
+            src={sitePath(item.screenshot.src)}
             alt={item.screenshot.alt}
             width="1280"
             height="720"
@@ -79,7 +81,7 @@ export function ProductPage({ product }: Readonly<{ product: ProductKey }>) {
           That boundary keeps each application independently useful and lets the suite compose
           through public contracts and ordinary files.
         </p>
-        <a href="/compare">See how the products fit together →</a>
+        <Link href="/compare">See how the products fit together →</Link>
       </section>
     </Page>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
@@ -30,16 +31,16 @@ export default function Home() {
       </a>
       <header className="site-header">
         <nav className="nav shell" aria-label="Main navigation">
-          <a className="logo" href="/">
+          <Link className="logo" href="/">
             ookkaayy<span>.</span>
-          </a>
+          </Link>
           <div className="nav-links">
-            <a href="/compare">Compare</a>
-            <a href="/docs">Docs</a>
-            <a href="/about">About</a>
-            <a className="button" href="/downloads">
+            <Link href="/compare">Compare</Link>
+            <Link href="/docs">Docs</Link>
+            <Link href="/about">About</Link>
+            <Link className="button" href="/downloads">
               Download
-            </a>
+            </Link>
           </div>
         </nav>
       </header>
@@ -60,12 +61,12 @@ export default function Home() {
                 and never trapped in somebody else’s cloud.
               </p>
               <div className="actions">
-                <a className="button" href="/downloads">
+                <Link className="button" href="/downloads">
                   Get Ookkaayy
-                </a>
-                <a className="button secondary" href="/compare">
+                </Link>
+                <Link className="button secondary" href="/compare">
                   Choose your tools
-                </a>
+                </Link>
               </div>
             </div>
             <div className="markdown-window" aria-label="Example Markdown document">
@@ -114,7 +115,7 @@ export default function Home() {
             </div>
             <div className="product-grid">
               {products.map((product) => (
-                <a
+                <Link
                   key={product.slug}
                   className={`product-card ${product.slug}`}
                   href={`/${product.slug}`}
@@ -123,7 +124,7 @@ export default function Home() {
                   <h3>Ookkaayy {product.name}</h3>
                   <p>{product.copy}</p>
                   <span className="learn">Explore {product.name} →</span>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

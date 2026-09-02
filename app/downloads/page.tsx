@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Page } from '@/components/site';
 import { products } from '@/lib/products';
 import { releases, repositoryDirectory } from '@/lib/releases';
@@ -104,7 +105,9 @@ export default function Downloads() {
                   </pre>
                   <a href={release.sourceUrl}>Open the {product.name} source repository →</a>
                   <br />
-                  <a href={`/docs#${release.product}-first-run`}>Read the first-run guide →</a>
+                  <Link href={`/docs#${release.product}-first-run`}>
+                    Read the first-run guide →
+                  </Link>
                 </div>
               </div>
             </article>
