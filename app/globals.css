@@ -731,7 +731,7 @@ a:focus-visible {
     min-height: 260px;
   }
 }
-@media (max-width: 560px) {
+@media (max-width: 650px) {
   .shell {
     width: min(100% - 28px, 1180px);
   }
