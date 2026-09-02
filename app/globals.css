@@ -74,6 +74,9 @@ a {
 .nav-links a:hover {
   color: var(--ink);
 }
+.mobile-menu {
+  display: none;
+}
 .button {
   display: inline-flex;
   align-items: center;
@@ -726,6 +729,83 @@ a:focus-visible {
   }
   .product-card {
     min-height: 260px;
+  }
+}
+@media (max-width: 560px) {
+  .shell {
+    width: min(100% - 28px, 1180px);
+  }
+  .nav {
+    height: 60px;
+    min-height: 60px;
+    padding-block: 0;
+    flex-wrap: nowrap;
+  }
+  .nav-links {
+    display: none;
+  }
+  .mobile-menu {
+    display: block;
+    position: relative;
+    margin-left: auto;
+  }
+  .mobile-menu summary {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-content: center;
+    gap: 5px;
+    cursor: pointer;
+    list-style: none;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+  }
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+  .mobile-menu summary span {
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ink);
+    transition: transform 160ms ease, opacity 160ms ease;
+  }
+  .mobile-menu[open] summary span:first-child {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .mobile-menu[open] summary span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu[open] summary span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .mobile-menu-panel {
+    position: absolute;
+    top: calc(100% + 9px);
+    right: 0;
+    width: min(260px, calc(100vw - 28px));
+    display: grid;
+    gap: 3px;
+    padding: 9px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 18px 45px rgb(24 35 29 / 16%);
+  }
+  .mobile-menu-panel a:not(.button) {
+    padding: 9px 11px;
+    color: var(--muted);
+    text-decoration: none;
+    border-radius: 7px;
+  }
+  .mobile-menu-panel a:not(.button):hover,
+  .mobile-menu-panel a:not(.button):focus-visible {
+    color: var(--ink);
+    background: color-mix(in srgb, var(--line) 45%, transparent);
+  }
+  .mobile-menu-panel .button {
+    margin-top: 5px;
   }
 }
 @media (prefers-color-scheme: dark) {

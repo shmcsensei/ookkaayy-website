@@ -31,6 +31,23 @@ export function Header() {
               Download
             </Link>
           </div>
+          <details className="mobile-menu">
+            <summary aria-label="Open main navigation">
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+            </summary>
+            <div className="mobile-menu-panel">
+              {navigation.map((item) => (
+                <Link href={item.href} key={item.href}>
+                  {item.label}
+                </Link>
+              ))}
+              <Link className="button" href="/downloads">
+                Download
+              </Link>
+            </div>
+          </details>
         </nav>
       </header>
     </>
