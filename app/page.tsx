@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Page } from '@/components/site';
 
 export const metadata: Metadata = { alternates: { canonical: '/' } };
 
@@ -25,26 +26,7 @@ const products = [
 ];
 export default function Home() {
   return (
-    <>
-      <a className="skip" href="#main">
-        Skip to content
-      </a>
-      <header className="site-header">
-        <nav className="nav shell" aria-label="Main navigation">
-          <Link className="logo" href="/">
-            ookkaayy<span>.</span>
-          </Link>
-          <div className="nav-links">
-            <Link href="/compare">Compare</Link>
-            <Link href="/docs">Docs</Link>
-            <Link href="/about">About</Link>
-            <Link className="button" href="/downloads">
-              Download
-            </Link>
-          </div>
-        </nav>
-      </header>
-      <main id="main">
+    <Page>
         <section className="hero">
           <div className="hero-grid shell">
             <div>
@@ -157,13 +139,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
-      <footer className="footer">
-        <div className="shell">
-          <span>© 2026 Ookkaayy</span>
-          <span>Write · Find · Protect</span>
-        </div>
-      </footer>
-    </>
+    </Page>
   );
 }

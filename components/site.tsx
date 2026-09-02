@@ -1,5 +1,15 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+
+const navigation = [
+  { href: '/wiki', label: 'Wiki' },
+  { href: '/search', label: 'Search' },
+  { href: '/version', label: 'Version' },
+  { href: '/compare', label: 'Compare' },
+  { href: '/docs', label: 'Docs' },
+  { href: '/about', label: 'About' },
+] as const;
+
 export function Header() {
   return (
     <>
@@ -12,11 +22,11 @@ export function Header() {
             ookkaayy<span>.</span>
           </Link>
           <div className="nav-links">
-            <Link href="/wiki">Wiki</Link>
-            <Link href="/search">Search</Link>
-            <Link href="/version">Version</Link>
-            <Link href="/compare">Compare</Link>
-            <Link href="/docs">Docs</Link>
+            {navigation.map((item) => (
+              <Link href={item.href} key={item.href}>
+                {item.label}
+              </Link>
+            ))}
             <Link className="button" href="/downloads">
               Download
             </Link>

@@ -102,6 +102,19 @@ test('privacy and accessibility foundations remain present', async () => {
   assert.match(layout, /og\.png/);
 });
 
+test('every page uses one global navigation with every public route reachable', async () => {
+  const home = await read('app/page.tsx');
+  const site = await read('components/site.tsx');
+  const styles = await read('app/globals.css');
+  assert.match(home, /<Page>/);
+  for (const route of ['wiki', 'search', 'version', 'compare', 'docs', 'about', 'downloads'])
+    assert.ok(
+      site.includes(`href: '/${route}'`) || site.includes(`href="/${route}"`),
+      `global navigation should link to /${route}`,
+    );
+  assert.doesNotMatch(styles, /\.nav-links a:not\(\.button\)[^{]*\{[^}]*display:\s*none/s);
+});
+
 test('operational policy is executable and owned', async () => {
   const policy = await read('lib/site-policy.ts');
   const operations = await read('OPERATIONS.md');
