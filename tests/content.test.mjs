@@ -20,14 +20,15 @@ test('portfolio responsibility language stays canonical', async () => {
   assert.match(compare, /Wiki writes\. Search finds\. Version protects\./);
 });
 
-test('downloads distinguish local artifacts from stable releases', async () => {
+test('downloads ship direct DMGs without exposing private source', async () => {
   const downloads = await read('app/downloads/page.tsx');
   const releases = await read('lib/releases.ts');
-  assert.match(downloads, /Development means development/);
+  assert.match(downloads, /Download for Mac/);
   for (const product of ['wiki', 'search', 'version'])
     assert.match(releases, new RegExp(`product: '${product}'`));
-  assert.match(releases, /built locally/);
-  assert.match(downloads, /not notarized, signed, or automatically updated/);
+  assert.equal((releases.match(/downloadPath: '\/downloads\/.*\.dmg'/g) ?? []).length, 3);
+  assert.doesNotMatch(downloads, /github\.com|sourceUrl|cargo tauri/i);
+  assert.match(downloads, /not yet signed, notarized, or automatically updated/);
   assert.equal((releases.match(/sha256: '[a-f0-9]{64}'/g) ?? []).length, 3);
   assert.equal((releases.match(/sizeBytes: [1-9][0-9]+/g) ?? []).length, 3);
 });
@@ -66,15 +67,14 @@ test('crawl metadata and canonical URLs are generated', async () => {
   assert.match(robots, /sitemap\.xml/);
 });
 
-test('installation and release provenance paths are actionable and exact', async () => {
+test('installation and release provenance are actionable and exact', async () => {
   const downloads = await read('app/downloads/page.tsx');
   const docs = await read('lib/docs.ts');
   const releases = await read('lib/releases.ts');
   const verifier = await read('scripts/verify-local-releases.mjs');
-  assert.match(downloads, /cd desktop\/src-tauri/);
   assert.match(docs, /desktop\/src-tauri/);
-  assert.equal((releases.match(/sourceUrl: 'https:\/\/github\.com\//g) ?? []).length, 3);
-  assert.match(downloads, /release\.sourceUrl/);
+  assert.doesNotMatch(releases, /sourceUrl/);
+  assert.match(downloads, /download/);
   assert.match(verifier, /status.*--porcelain/s);
   assert.match(verifier, /source tree.*is dirty/);
 });

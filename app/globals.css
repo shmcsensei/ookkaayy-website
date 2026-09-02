@@ -606,6 +606,26 @@ a:focus-visible {
 .artifact-table {
   margin-top: 28px;
 }
+.download-release > header {
+  align-items: center;
+}
+.download-button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.download-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+.download-details span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 11px;
+  color: var(--muted);
+  font-size: 12px;
+}
 .artifact-path {
   display: block;
   margin-top: 8px;
@@ -630,6 +650,18 @@ a:focus-visible {
 }
 .release-bottom h3 {
   font-size: 20px;
+}
+.integrity {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+.integrity summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 700;
 }
 .skip {
   position: absolute;

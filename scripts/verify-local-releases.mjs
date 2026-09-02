@@ -38,20 +38,19 @@ for (const release of releases) {
       `${release.product}: source tree ${fullRevision.trim()} is dirty; local artifacts cannot claim clean revision provenance`,
     );
   }
-  for (const artifact of release.artifacts.filter((value) => value.status === 'built locally')) {
-    const file = path.resolve(root, artifact.location);
-    const details = await stat(file);
-    if (details.size !== artifact.sizeBytes) {
-      throw new Error(
-        `${release.product}: expected ${artifact.sizeBytes} bytes, found ${details.size}`,
-      );
-    }
-    const digest = await sha256(file);
-    if (digest !== artifact.sha256) {
-      throw new Error(`${release.product}: SHA-256 mismatch for ${file}`);
-    }
-    console.log(
-      `${release.product}: ${artifact.kind.toUpperCase()} verified at ${release.revision}`,
+  const file = path.resolve(
+    root,
+    'public',
+    release.downloadPath.replace(/^\/downloads\//, 'downloads/'),
+  );
+  const details = await stat(file);
+  if (details.size !== release.sizeBytes) {
+    throw new Error(
+      `${release.product}: expected ${release.sizeBytes} bytes, found ${details.size}`,
     );
   }
+  const digest = await sha256(file);
+  if (digest !== release.sha256)
+    throw new Error(`${release.product}: SHA-256 mismatch for ${file}`);
+  console.log(`${release.product}: DMG verified at ${release.revision}`);
 }
