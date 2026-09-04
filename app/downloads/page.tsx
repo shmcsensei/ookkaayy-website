@@ -87,9 +87,9 @@ export default function Downloads() {
         <p className="kicker">Before you install</p>
         <h2>Early macOS builds.</h2>
         <p>
-          These apps are not yet signed, notarized, or automatically updated. macOS may ask you to
-          confirm the first launch in System Settings. The checksum shown with each app verifies the
-          exact file you downloaded.
+          These apps are ad-hoc signed, but not yet Developer ID signed, notarized, or automatically
+          updated. macOS will ask you to approve the first launch in System Settings → Privacy &amp;
+          Security. The checksum shown with each app verifies the exact file you downloaded.
         </p>
       </section>
     </Page>

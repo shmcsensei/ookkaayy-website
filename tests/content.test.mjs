@@ -28,7 +28,7 @@ test('downloads ship direct DMGs without exposing private source', async () => {
     assert.match(releases, new RegExp(`product: '${product}'`));
   assert.equal((releases.match(/downloadPath: '\/downloads\/.*\.dmg'/g) ?? []).length, 3);
   assert.doesNotMatch(downloads, /github\.com|sourceUrl|cargo tauri/i);
-  assert.match(downloads, /not yet signed, notarized, or automatically updated/);
+  assert.match(downloads, /ad-hoc signed, but not yet Developer ID signed, notarized/);
   assert.equal((releases.match(/sha256: '[a-f0-9]{64}'/g) ?? []).length, 3);
   assert.equal((releases.match(/sizeBytes: [1-9][0-9]+/g) ?? []).length, 3);
 });

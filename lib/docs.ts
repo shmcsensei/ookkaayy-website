@@ -16,11 +16,11 @@ export const guides: readonly Guide[] = [
     product: 'suite',
     title: 'Install the suite',
     summary: 'Build every product and open the native applications locally.',
-    command: 'cd desktop/src-tauri\ncargo tauri build --bundles app --no-sign',
+    command: 'cd desktop/src-tauri\ncargo tauri build --bundles app',
     steps: [
       'Install Rust 1.98+ and Node.js 22+',
       'Clone the four sibling repositories into one parent folder',
-      'From each repository, enter desktop/src-tauri and run cargo tauri build --bundles app --no-sign',
+      'From each repository, enter desktop/src-tauri and run cargo tauri build --bundles app',
       'Open Wiki and enable Search or Version only for the folders that need them',
     ],
     note: 'Core use is offline. A network connection is only needed while installing dependencies.',
