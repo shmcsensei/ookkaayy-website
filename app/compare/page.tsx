@@ -54,7 +54,7 @@ export default function Compare() {
       </section>
       <section className="scope shell">
         <p className="kicker">Recommended suite</p>
-        <h2>Wiki writes. Search finds. Version protects.</h2>
+        <h2>Content writes. Search finds. Version protects.</h2>
         <p>
           All three can observe the same folder. Only one synchronization authority is active for a
           collection, preventing competing systems from merging the same working tree.

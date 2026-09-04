@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 
 const navigation = [
-  { href: '/wiki', label: 'Wiki' },
+  { href: '/content', label: 'Content' },
   { href: '/search', label: 'Search' },
   { href: '/version', label: 'Version' },
   { href: '/compare', label: 'Compare' },

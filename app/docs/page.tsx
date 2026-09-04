@@ -27,7 +27,7 @@ export default function Docs() {
         <h2>Three public contracts, one ordinary folder.</h2>
         <p>
           Search exposes read-only HTTP and MCP retrieval. Version exposes protected history
-          actions. Wiki coordinates both over authenticated loopback contracts while keeping
+          actions. Content coordinates both over authenticated loopback contracts while keeping
           Markdown as the source of truth.
         </p>
         <div className="actions">

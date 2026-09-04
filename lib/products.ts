@@ -1,11 +1,11 @@
 export const products = {
-  wiki: {
-    name: 'Wiki',
+  content: {
+    name: 'Content',
     verb: 'Write',
-    accent: 'var(--wiki)',
+    accent: 'var(--content)',
     promise: 'Your knowledge, stored as simple Markdown.',
     description:
-      'A local-first Markdown wiki, notes application, and lightweight content-management system.',
+      'A local-first Markdown editor, notes application, and lightweight content-management system.',
     features: [
       'Create and edit portable Markdown pages',
       'YAML properties, tags, links, and backlinks',
@@ -18,11 +18,11 @@ export const products = {
       'Write visually or edit the raw Markdown',
       'Browse through folders, tags, metadata, and links',
     ],
-    scope: 'Wiki owns current content. It does not own Git history or enhanced retrieval indexes.',
+    scope: 'Content owns current content. It does not own Git history or enhanced retrieval indexes.',
     port: '43111',
     screenshot: {
-      src: '/screenshots/wiki.jpg',
-      alt: 'Ookkaayy Wiki showing the Project Atlas Markdown preview, typed properties, backlinks, and page navigation.',
+      src: '/screenshots/content.jpg',
+      alt: 'Ookkaayy Content showing the Project Atlas Markdown preview, typed properties, backlinks, and page navigation.',
       verifiedAt: '2026-08-31',
     },
   },

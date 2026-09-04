@@ -5,7 +5,7 @@ import { test } from 'node:test';
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 
 test('all required public routes exist in the built source', async () => {
-  for (const route of ['wiki', 'search', 'version', 'compare', 'docs', 'downloads', 'about']) {
+  for (const route of ['content', 'search', 'version', 'compare', 'docs', 'downloads', 'about']) {
     const page = await read(`app/${route}/page.tsx`);
     assert.match(page, /export default/);
   }
@@ -17,14 +17,14 @@ test('portfolio responsibility language stays canonical', async () => {
   assert.match(home, /Write/);
   assert.match(home, /Find/);
   assert.match(home, /Protect/);
-  assert.match(compare, /Wiki writes\. Search finds\. Version protects\./);
+  assert.match(compare, /Content writes\. Search finds\. Version protects\./);
 });
 
 test('downloads ship direct DMGs without exposing private source', async () => {
   const downloads = await read('app/downloads/page.tsx');
   const releases = await read('lib/releases.ts');
   assert.match(downloads, /Download for Mac/);
-  for (const product of ['wiki', 'search', 'version'])
+  for (const product of ['content', 'search', 'version'])
     assert.match(releases, new RegExp(`product: '${product}'`));
   assert.equal((releases.match(/downloadPath: '\/downloads\/.*\.dmg'/g) ?? []).length, 3);
   assert.doesNotMatch(downloads, /github\.com|sourceUrl|cargo tauri/i);
@@ -52,7 +52,7 @@ test('crawl metadata and canonical URLs are generated', async () => {
   const robots = await read('app/robots.ts');
   assert.match(home, /alternates: \{ canonical: '\/' \}/);
   for (const route of [
-    '/wiki',
+    '/content',
     '/search',
     '/version',
     '/compare',
@@ -82,7 +82,7 @@ test('installation and release provenance are actionable and exact', async () =>
 test('every product page uses a recent authentic interface capture with useful alt text', async () => {
   const products = await read('lib/products.ts');
   const component = await read('components/product-page.tsx');
-  for (const product of ['wiki', 'search', 'version']) {
+  for (const product of ['content', 'search', 'version']) {
     assert.match(products, new RegExp(`/screenshots/${product}\\.jpg`));
     const image = await stat(new URL(`../public/screenshots/${product}.jpg`, import.meta.url));
     assert.ok(image.size > 40_000, `${product} screenshot should contain a real interface capture`);
@@ -107,7 +107,7 @@ test('every page uses one global navigation with every public route reachable', 
   const site = await read('components/site.tsx');
   const styles = await read('app/globals.css');
   assert.match(home, /<Page>/);
-  for (const route of ['wiki', 'search', 'version', 'compare', 'docs', 'about', 'downloads'])
+  for (const route of ['content', 'search', 'version', 'compare', 'docs', 'about', 'downloads'])
     assert.ok(
       site.includes(`href: '/${route}'`) || site.includes(`href="/${route}"`),
       `global navigation should link to /${route}`,

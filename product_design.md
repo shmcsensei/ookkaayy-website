@@ -2,7 +2,7 @@
 
 **A clear, trustworthy front door to the Ookkaayy product family.**
 
-The Ookkaayy Website is the public marketing, learning, and download surface for Ookkaayy Wiki, Search, and Version. It explains the shared local-first vision, helps visitors identify the product or combination that fits their work, and gives them a direct path from discovery to installation and useful documentation.
+The Ookkaayy Website is the public marketing, learning, and download surface for Ookkaayy Content, Search, and Version. It explains the shared local-first vision, helps visitors identify the product or combination that fits their work, and gives them a direct path from discovery to installation and useful documentation.
 
 The website is a static-first public site. It does not store a user's Markdown, run the product engines in the browser, or become a required cloud control plane. Every Ookkaayy product remains independently installable and fully useful offline.
 
@@ -10,13 +10,13 @@ The website is a static-first public site. It does not store a user's Markdown, 
 
 > Understand Ookkaayy, choose what you need, and get started with confidence.
 
-The site should make the portfolio legible within a minute: Wiki writes and organizes Markdown, Search retrieves it, and Version protects its history. Visitors should never have to reverse-engineer the distinction from feature lists or repository names.
+The site should make the portfolio legible within a minute: Content writes and organizes Markdown, Search retrieves it, and Version protects its history. Visitors should never have to reverse-engineer the distinction from feature lists or repository names.
 
 ## Portfolio story and boundaries
 
 The website presents one product family built around ordinary Markdown files and their referenced attachments:
 
-- **Ookkaayy Wiki owns current-content authoring:** pages, metadata, links, attachments, optional device sync, and publishing.
+- **Ookkaayy Content owns current-content authoring:** pages, metadata, links, attachments, optional device sync, and publishing.
 - **Ookkaayy Search owns retrieval:** read-only parsing, indexing, ranking, and retrieval of the current Markdown working tree.
 - **Ookkaayy Version owns history:** Git-backed versions, comparison, restoration, conflict resolution, and optional Git-remote synchronization.
 
@@ -42,7 +42,7 @@ The public copy leads with user outcomes. Implementation details remain availabl
 The website is designed around a few short paths:
 
 1. **Discover:** understand the local-first Markdown premise and the three product responsibilities.
-2. **Choose:** compare Wiki, Search, and Version by job, not by an undifferentiated feature matrix.
+2. **Choose:** compare Content, Search, and Version by job, not by an undifferentiated feature matrix.
 3. **Evaluate:** inspect screenshots, workflows, privacy expectations, platform support, architecture, and limitations.
 4. **Install:** select a supported platform and obtain a verified release with concise first-run instructions.
 5. **Learn:** reach task-oriented documentation, product concepts, API references, MCP setup, and troubleshooting.
@@ -55,7 +55,7 @@ Every important page has one primary next action. Marketing pages avoid dead end
 The initial site uses a deliberately small hierarchy:
 
 - **Home** — portfolio promise, product overview, shared principles, and primary calls to action
-- **Wiki** — authoring and organization workflows, screenshots, integrations, and download
+- **Content** — authoring and organization workflows, screenshots, integrations, and download
 - **Search** — retrieval workflows, Markdown-aware hybrid search, integrations, and download
 - **Version** — plain-language history workflows, restoration, synchronization, and download
 - **Compare** — which product owns which job, standalone use, and suite combinations
@@ -116,7 +116,7 @@ The voice is plainspoken, specific, and confident without being grandiose. Pages
 
 Portfolio language stays canonical across the site:
 
-- Wiki writes and organizes Markdown.
+- Content writes and organizes Markdown.
 - Search indexes and retrieves current Markdown.
 - Version preserves Markdown history.
 
@@ -164,7 +164,7 @@ The initial implementation should prefer the smallest framework that satisfies c
 
 ## Repository and delivery model
 
-The website lives in its own private repository with an independent release and deployment history. It does not import private implementation modules from Wiki, Search, or Version. Product facts and release metadata cross repository boundaries through explicit, versioned data or release artifacts rather than source-level coupling.
+The website lives in its own private repository with an independent release and deployment history. It does not import private implementation modules from Content, Search, or Version. Product facts and release metadata cross repository boundaries through explicit, versioned data or release artifacts rather than source-level coupling.
 
 The repository should begin with:
 
@@ -209,7 +209,7 @@ Add localization readiness, documented content ownership, automated screenshot f
 
 ## Intentionally out of scope
 
-The initial website is not a browser-based edition of Wiki, Search, or Version; an account dashboard; a hosted knowledge database; a community social network; a support ticketing system; an e-commerce platform; or the synchronization authority for product data.
+The initial website is not a browser-based edition of Content, Search, or Version; an account dashboard; a hosted knowledge database; a community social network; a support ticketing system; an e-commerce platform; or the synchronization authority for product data.
 
 It should not grow a custom CMS, client-rendered application shell, or backend service merely to reproduce capabilities already handled by static content, Git-based review, the release host, or a focused external service.
 

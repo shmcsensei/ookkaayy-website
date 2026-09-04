@@ -16,7 +16,7 @@ All five findings are resolved. Every route has its own canonical URL; Tauri com
 
 Evidence: root metadata sets `alternates: { canonical: '/' }` (`app/layout.tsx:5-10`). Route pages define titles/descriptions but do not override canonical metadata. The content test only asserts that the root declaration exists (`tests/content.test.mjs:48-55`).
 
-Impact: `/wiki`, `/search`, `/version`, `/compare`, `/docs`, `/downloads`, and `/about` tell crawlers that `/` is their canonical page. Search engines may consolidate or suppress those distinct routes.
+Impact: `/content`, `/search`, `/version`, `/compare`, `/docs`, `/downloads`, and `/about` tell crawlers that `/` is their canonical page. Search engines may consolidate or suppress those distinct routes.
 
 Design conflict: `product_design.md` requires stable, human-readable, product-scoped canonical URLs and generated crawl metadata.
 

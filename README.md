@@ -1,6 +1,6 @@
 # Ookkaayy Website
 
-The static marketing, documentation, and download front door for Ookkaayy Wiki, Search, and Version. The production build exports plain HTML, CSS, JavaScript, and assets to `out/` for GitHub Pages.
+The static marketing, documentation, and download front door for Ookkaayy Content, Search, and Version. The production build exports plain HTML, CSS, JavaScript, and assets to `out/` for GitHub Pages.
 
 ```sh
 npm install

@@ -70,7 +70,7 @@ export function ProductPage({ product }: Readonly<{ product: ProductKey }>) {
           />
           <figcaption>
             This is the product UI—not a marketing reconstruction. The example collection is shared
-            across Wiki, Search, and Version.
+            across Content, Search, and Version.
           </figcaption>
         </figure>
       </section>

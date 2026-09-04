@@ -6,9 +6,9 @@ export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 const products = [
   {
-    slug: 'wiki',
+    slug: 'content',
     verb: 'Write',
-    name: 'Wiki',
+    name: 'Content',
     copy: 'Create and organize notes, documentation, research, and publishable pages as ordinary Markdown.',
   },
   {

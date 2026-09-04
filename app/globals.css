@@ -7,7 +7,7 @@
   --line: #d7d4ca;
   --panel: #fbfaf6;
   --brand: #1f6846;
-  --wiki: #7750a2;
+  --content: #7750a2;
   --search: #2e7652;
   --version: #347083;
   --radius: 14px;
@@ -224,8 +224,8 @@ h2 {
   margin-top: auto;
   font-weight: 700;
 }
-.wiki .verb {
-  color: var(--wiki);
+.content .verb {
+  color: var(--content);
 }
 .search .verb {
   color: var(--search);

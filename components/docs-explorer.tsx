@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import type { Guide } from '@/lib/docs';
 
-const filters = ['all', 'suite', 'wiki', 'search', 'version'] as const;
+const filters = ['all', 'suite', 'content', 'search', 'version'] as const;
 
 export function DocsExplorer({ guides }: Readonly<{ guides: readonly Guide[] }>) {
   const [query, setQuery] = useState('');

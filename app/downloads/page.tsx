@@ -7,7 +7,7 @@ import { sitePath } from '@/lib/paths';
 
 export const metadata: Metadata = {
   title: 'Download for Mac',
-  description: 'Download Ookkaayy Wiki, Search, and Version for macOS.',
+  description: 'Download Ookkaayy Content, Search, and Version for macOS.',
   alternates: { canonical: '/downloads' },
 };
 

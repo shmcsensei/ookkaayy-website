@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { sitePolicy } from '../lib/site-policy.ts';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const routeNames = ['', 'about', 'compare', 'docs', 'downloads', 'search', 'version', 'wiki'];
+const routeNames = ['', 'about', 'compare', 'docs', 'downloads', 'search', 'version', 'content'];
 const routeSet = new Set(routeNames.map((route) => `/${route}`.replace(/\/$/, '') || '/'));
 const sourceFiles = (await readdir(join(root, 'app'), { recursive: true }))
   .filter((path) => path.endsWith('.tsx'))
