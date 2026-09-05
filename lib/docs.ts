@@ -19,10 +19,10 @@ export const guides: readonly Guide[] = [
     steps: [
       'Download Content, Search, and Version from the Downloads page',
       'Open each disk image and drag the application into Applications',
-      'Approve the first launch in System Settings → Privacy & Security when macOS asks',
+      'In Applications, right-click or Control-click each app, choose Open, then confirm Open',
       'Open Content and enable Search or Version only for the folders that need them',
     ],
-    note: 'Core use is offline. No developer toolchain or account is required.',
+    note: 'The current builds are not notarized, so macOS blocks a normal first launch. Only use the Open override for an app you intentionally downloaded from this site; compare its published SHA-256 checksum if you want to verify the file first. Core use is offline, and no developer toolchain or account is required.',
   },
   {
     id: 'content-first-run',
@@ -30,7 +30,7 @@ export const guides: readonly Guide[] = [
     title: 'Create your first page',
     summary: 'Open an ordinary Markdown folder and begin authoring immediately.',
     steps: [
-      'Open Ookkaayy Content from Applications',
+      'For the first launch, right-click or Control-click Ookkaayy Content in Applications, choose Open, then confirm Open',
       'Choose an absolute folder containing Markdown',
       'Create a page or select an existing file',
       'Use Source, Split, or Preview mode and save',
@@ -42,7 +42,7 @@ export const guides: readonly Guide[] = [
     title: 'Index and search a folder',
     summary: 'Build a disposable local index without changing source files.',
     steps: [
-      'Open Ookkaayy Search from Applications',
+      'For the first launch, right-click or Control-click Ookkaayy Search in Applications, choose Open, then confirm Open',
       'Add an absolute Markdown folder as a collection',
       'Wait for the indexing job to finish',
       'Search text, headings, tags, paths, or date ranges',
@@ -54,7 +54,7 @@ export const guides: readonly Guide[] = [
     title: 'Protect a Markdown folder',
     summary: 'Create understandable Git-backed history without using Git commands.',
     steps: [
-      'Open Ookkaayy Version from Applications',
+      'For the first launch, right-click or Control-click Ookkaayy Version in Applications, choose Open, then confirm Open',
       'Choose an absolute Markdown folder',
       'Review detected working changes',
       'Save a named version before risky edits',
@@ -121,7 +121,7 @@ export const guides: readonly Guide[] = [
     title: 'Run a headless API service',
     summary: 'Use the same product engine without the desktop shell or browser interface.',
     command:
-      "ookkaayy-search --no-web --bind 127.0.0.1:43110 serve\n# Replace the product and port with Content/43111 or Version/43112",
+      'ookkaayy-search --no-web --bind 127.0.0.1:43110 serve\n# Replace the product and port with Content/43111 or Version/43112',
     steps: [
       'Install the product’s -cli Cask from the Ookkaayy Homebrew tap',
       'Pass --no-web before serve to start only the versioned HTTP API',
@@ -165,7 +165,8 @@ export const guides: readonly Guide[] = [
     id: 'use-cli',
     product: 'suite',
     title: 'Use the command-line tools',
-    summary: 'Run diagnostics, local services, MCP servers, and Search maintenance from a terminal.',
+    summary:
+      'Run diagnostics, local services, MCP servers, and Search maintenance from a terminal.',
     command:
       'ookkaayy-content doctor\nookkaayy-search add /absolute/path/to/markdown --name "Notes"\nookkaayy-search search "release checklist"\nookkaayy-version --no-web serve',
     steps: [

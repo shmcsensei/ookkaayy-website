@@ -62,10 +62,14 @@ export default function Downloads() {
                   </ul>
                 </div>
                 <div>
-                  <h3>Install in two steps</h3>
+                  <h3>Install and open</h3>
                   <ol>
                     <li>Open the downloaded DMG.</li>
                     <li>Drag Ookkaayy {product.name} into Applications.</li>
+                    <li>
+                      In Applications, right-click (or Control-click) Ookkaayy {product.name},
+                      choose <strong>Open</strong>, then click <strong>Open</strong> again.
+                    </li>
                   </ol>
                   <Link href={`/docs#${release.product}-first-run`}>
                     Read the first-run guide →
@@ -96,9 +100,7 @@ export default function Downloads() {
           <code>
             {'brew tap ookkaayy-ai/tap\n'}
             {'brew trust ookkaayy-ai/tap\n'}
-            {
-              'brew install --cask ookkaayy-content-cli ookkaayy-search-cli ookkaayy-version-cli'
-            }
+            {'brew install --cask ookkaayy-content-cli ookkaayy-search-cli ookkaayy-version-cli'}
           </code>
         </pre>
         <p>
@@ -108,9 +110,7 @@ export default function Downloads() {
         </p>
         <pre>
           <code>
-            {
-              'xattr -d com.apple.quarantine "$(brew --prefix)/bin/ookkaayy-content"\n'
-            }
+            {'xattr -d com.apple.quarantine "$(brew --prefix)/bin/ookkaayy-content"\n'}
             {'xattr -d com.apple.quarantine "$(brew --prefix)/bin/ookkaayy-search"\n'}
             {'xattr -d com.apple.quarantine "$(brew --prefix)/bin/ookkaayy-version"'}
           </code>
@@ -131,12 +131,20 @@ export default function Downloads() {
         </div>
       </section>
       <section className="scope shell">
-        <p className="kicker">Before you install</p>
-        <h2>Early macOS builds.</h2>
+        <p className="kicker">Why macOS shows a warning</p>
+        <h2>Opening an unsigned app safely.</h2>
         <p>
-          These apps are ad-hoc signed, but not yet Developer ID signed, notarized, or automatically
-          updated. macOS will ask you to approve the first launch in System Settings → Privacy &amp;
-          Security. The checksum shown with each app verifies the exact file you downloaded.
+          These free builds are ad-hoc signed, but not yet Developer ID signed, notarized, or
+          automatically updated, so Gatekeeper blocks a normal first launch. After downloading from
+          this page, open Finder → Applications, right-click (or Control-click) the Ookkaayy app,
+          choose <strong>Open</strong>, then confirm <strong>Open</strong>. You only need to do this
+          once per app version.
+        </p>
+        <p>
+          Only override Gatekeeper for software you intended to download. You can compare the
+          SHA-256 checksum on this page before opening the app. If the Open option does not appear,
+          try launching the app once, then go to System Settings → Privacy &amp; Security and choose
+          <strong> Open Anyway</strong> for that specific app.
         </p>
       </section>
     </Page>

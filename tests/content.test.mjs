@@ -29,6 +29,8 @@ test('downloads ship direct DMGs without exposing private source', async () => {
   assert.equal((releases.match(/downloadPath: '\/downloads\/.*\.dmg'/g) ?? []).length, 3);
   assert.doesNotMatch(downloads, /github\.com|sourceUrl|cargo tauri/i);
   assert.match(downloads, /ad-hoc signed, but not yet Developer ID signed, notarized/);
+  assert.match(downloads, /right-click \(or Control-click\)/);
+  assert.match(downloads, /Only override Gatekeeper for software you intended to download/);
   assert.equal((releases.match(/sha256: '[a-f0-9]{64}'/g) ?? []).length, 3);
   assert.equal((releases.match(/sizeBytes: [1-9][0-9]+/g) ?? []).length, 3);
 });
@@ -86,8 +88,12 @@ test('installation and release provenance are actionable and exact', async () =>
   const releases = await read('lib/releases.ts');
   const verifier = await read('scripts/verify-local-releases.mjs');
   assert.doesNotMatch(docs, /cargo|src-tauri|source checkout/i);
-  assert.match(downloads, /brew install --cask ookkaayy-content-cli ookkaayy-search-cli ookkaayy-version-cli/);
+  assert.match(
+    downloads,
+    /brew install --cask ookkaayy-content-cli ookkaayy-search-cli ookkaayy-version-cli/,
+  );
   assert.match(downloads, /xattr -d com\.apple\.quarantine/);
+  assert.match(docs, /right-click or Control-click each app, choose Open/);
   assert.match(downloads, /permits worldwide personal and internal business use/);
   assert.doesNotMatch(downloads, /not published yet|planned tap/i);
   assert.doesNotMatch(releases, /sourceUrl/);
