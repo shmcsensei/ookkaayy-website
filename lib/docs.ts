@@ -136,11 +136,12 @@ export const guides: readonly Guide[] = [
     title: 'Install a command-line binary',
     summary: 'Install a prebuilt command-line, headless API, and MCP binary with Homebrew.',
     command:
-      'brew tap ookkaayy-ai/tap\nbrew trust ookkaayy-ai/tap\nbrew install --cask ookkaayy-search-cli\nookkaayy-search doctor',
+      'brew tap ookkaayy-ai/tap\nbrew trust ookkaayy-ai/tap\nbrew install --cask ookkaayy-search-cli\nxattr -d com.apple.quarantine "$(brew --prefix)/bin/ookkaayy-search"\nookkaayy-search doctor',
     steps: [
       'Install Homebrew, add the Ookkaayy package tap, and explicitly trust that third-party tap',
       'Install ookkaayy-content-cli, ookkaayy-search-cli, or ookkaayy-version-cli',
       'Homebrew downloads the versioned binary archive, verifies its checksum, and places the command on PATH',
+      'For the ad-hoc-signed v0.1.0 build, explicitly remove macOS quarantine from that installed command once',
       'Run doctor, then use --help to see product-specific commands and options',
     ],
     note: 'The current v0.1.0 CLI Casks support Apple-silicon Macs running macOS 11 or newer. They are ad-hoc signed and not yet notarized. Their included proprietary license permits worldwide personal and internal business use but not redistribution or hosted third-party services.',

@@ -103,8 +103,19 @@ export default function Downloads() {
         </pre>
         <p>
           Version 0.1.0 currently supports Apple-silicon Macs running macOS 11 or newer. These early
-          CLI binaries are ad-hoc signed and not yet notarized.
+          CLI binaries are ad-hoc signed and not yet notarized. macOS quarantines them after
+          download; after reviewing this warning, explicitly allow each installed command once:
         </p>
+        <pre>
+          <code>
+            {
+              'xattr -d com.apple.quarantine "$(brew --prefix)/bin/ookkaayy-content"\n'
+            }
+            {'xattr -d com.apple.quarantine "$(brew --prefix)/bin/ookkaayy-search"\n'}
+            {'xattr -d com.apple.quarantine "$(brew --prefix)/bin/ookkaayy-version"'}
+          </code>
+        </pre>
+        <p>Developer ID signing and notarization will remove this temporary step.</p>
         <p>
           Each archive includes the Ookkaayy Proprietary Software License v1.0. Copyright © 2026
           Simon Chong. It permits worldwide personal and internal business use; redistribution and
