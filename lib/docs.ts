@@ -123,7 +123,7 @@ export const guides: readonly Guide[] = [
     command:
       "ookkaayy-search --no-web --bind 127.0.0.1:43110 serve\n# Replace the product and port with Content/43111 or Version/43112",
     steps: [
-      'Download the packaged headless binary for the operating system and architecture',
+      'Install the product’s -cli Cask from the Ookkaayy Homebrew tap',
       'Pass --no-web before serve to start only the versioned HTTP API',
       'Keep the default loopback bind when the caller runs on the same machine',
       'For another network interface, add a long --auth-token and an exact --cors-origin allowlist, then terminate TLS at a trusted reverse proxy',
@@ -134,16 +134,31 @@ export const guides: readonly Guide[] = [
     id: 'install-cli',
     product: 'suite',
     title: 'Install a command-line binary',
-    summary: 'Install a prebuilt executable after CLI archives become available.',
+    summary: 'Install a prebuilt command-line, headless API, and MCP binary with Homebrew.',
     command:
-      'mkdir -p ~/.local/bin\ninstall -m 755 ookkaayy-search ~/.local/bin/ookkaayy-search\nookkaayy-search doctor',
+      'brew tap ookkaayy-ai/tap\nbrew trust ookkaayy-ai/tap\nbrew install --cask ookkaayy-search-cli\nookkaayy-search doctor',
     steps: [
-      'Download the CLI archive for the product, operating system, and architecture you need',
-      'Verify the published SHA-256 checksum before installing the executable',
-      'Move the executable into ~/.local/bin on macOS or Linux and ensure that directory is on PATH; on Windows, add the extracted folder to Path',
+      'Install Homebrew, add the Ookkaayy package tap, and explicitly trust that third-party tap',
+      'Install ookkaayy-content-cli, ookkaayy-search-cli, or ookkaayy-version-cli',
+      'Homebrew downloads the versioned binary archive, verifies its checksum, and places the command on PATH',
       'Run doctor, then use --help to see product-specific commands and options',
     ],
-    note: 'CLI and headless archives have not been published yet. The Downloads page currently provides desktop applications only.',
+    note: 'The current v0.1.0 CLI Casks support Apple-silicon Macs running macOS 11 or newer. They are ad-hoc signed and not yet notarized.',
+  },
+  {
+    id: 'install-homebrew-apps',
+    product: 'suite',
+    title: 'Install the desktop apps with Homebrew',
+    summary: 'Install and upgrade packaged macOS applications from the same Ookkaayy tap.',
+    command:
+      'brew tap ookkaayy-ai/tap\nbrew trust ookkaayy-ai/tap\nbrew install --cask ookkaayy-content ookkaayy-search ookkaayy-version',
+    steps: [
+      'Add and trust the Ookkaayy tap once on the Mac',
+      'Install one application or all three application casks',
+      'Use brew upgrade to receive later signed releases',
+      'Use brew uninstall --cask with the package name to remove an application',
+    ],
+    note: 'The Homebrew tap is live. The current desktop Casks install the existing v0.1.0 disk-image releases.',
   },
   {
     id: 'use-cli',

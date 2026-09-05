@@ -84,13 +84,26 @@ export default function Downloads() {
         })}
       </section>
       <section className="scope shell" id="cli">
-        <p className="kicker">CLI and headless distributions</p>
-        <h2>Packaged service binaries are coming next.</h2>
+        <p className="kicker">Homebrew, CLI, and headless distributions</p>
+        <h2>Install the CLI, API, and MCP servers.</h2>
         <p>
-          The downloads above contain the macOS desktop applications. Standalone command-line and
-          headless archives are not published yet, so there is currently no supported public CLI
-          installation. When available, each archive will include one product binary and a matching
-          SHA-256 checksum for macOS, Linux, or Windows.
+          The Ookkaayy Homebrew tap provides separate CLI Casks for Content, Search, and Version.
+          Each private, prebuilt binary includes terminal commands, a headless HTTP API, and its own
+          standard-input/output MCP server. Homebrew verifies the versioned archive checksum and
+          places the product command on PATH.
+        </p>
+        <pre>
+          <code>
+            {'brew tap ookkaayy-ai/tap\n'}
+            {'brew trust ookkaayy-ai/tap\n'}
+            {
+              'brew install --cask ookkaayy-content-cli ookkaayy-search-cli ookkaayy-version-cli'
+            }
+          </code>
+        </pre>
+        <p>
+          Version 0.1.0 currently supports Apple-silicon Macs running macOS 11 or newer. These early
+          CLI binaries are ad-hoc signed and not yet notarized.
         </p>
         <div className="actions">
           <Link className="button secondary" href="/docs#install-cli">

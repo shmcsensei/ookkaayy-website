@@ -49,12 +49,14 @@ test('documentation is searchable, filterable, and identifies security boundarie
     'automatic protection',
     'headless',
     'Embed Ookkaayy',
-    'prebuilt executable',
+    'prebuilt command-line',
   ])
     assert.match(docs, new RegExp(topic, 'i'));
   for (const product of ['content-mcp', 'search-mcp', 'version-mcp'])
     assert.match(docs, new RegExp(`id: '${product}'`));
-  assert.equal((docs.match(/id: '/g) ?? []).length, 23);
+  assert.match(docs, /brew trust ookkaayy-ai\/tap/);
+  assert.match(docs, /brew install --cask ookkaayy-search-cli/);
+  assert.equal((docs.match(/id: '/g) ?? []).length, 24);
 });
 
 test('crawl metadata and canonical URLs are generated', async () => {
@@ -84,7 +86,8 @@ test('installation and release provenance are actionable and exact', async () =>
   const releases = await read('lib/releases.ts');
   const verifier = await read('scripts/verify-local-releases.mjs');
   assert.doesNotMatch(docs, /cargo|src-tauri|source checkout/i);
-  assert.match(downloads, /Standalone command-line and\s+headless archives are not published yet/);
+  assert.match(downloads, /brew install --cask ookkaayy-content-cli ookkaayy-search-cli ookkaayy-version-cli/);
+  assert.doesNotMatch(downloads, /not published yet|planned tap/i);
   assert.doesNotMatch(releases, /sourceUrl/);
   assert.match(downloads, /download/);
   assert.match(verifier, /status.*--porcelain/s);
