@@ -41,9 +41,20 @@ test('documentation is searchable, filterable, and identifies security boundarie
   assert.match(explorer, /role="status"/);
   for (const topic of ['MCP', 'loopback', 'restore', 'sync authority'])
     assert.match(docs, new RegExp(topic, 'i'));
-  for (const topic of ['three-way', 'Git credential', '/api/v1', 'doctor', 'automatic protection'])
+  for (const topic of [
+    'three-way',
+    'Git credential',
+    '/api/v1',
+    'doctor',
+    'automatic protection',
+    'headless',
+    'Embed Ookkaayy',
+    'prebuilt executable',
+  ])
     assert.match(docs, new RegExp(topic, 'i'));
-  assert.equal((docs.match(/id: '/g) ?? []).length, 16);
+  for (const product of ['content-mcp', 'search-mcp', 'version-mcp'])
+    assert.match(docs, new RegExp(`id: '${product}'`));
+  assert.equal((docs.match(/id: '/g) ?? []).length, 23);
 });
 
 test('crawl metadata and canonical URLs are generated', async () => {
@@ -72,7 +83,8 @@ test('installation and release provenance are actionable and exact', async () =>
   const docs = await read('lib/docs.ts');
   const releases = await read('lib/releases.ts');
   const verifier = await read('scripts/verify-local-releases.mjs');
-  assert.match(docs, /desktop\/src-tauri/);
+  assert.doesNotMatch(docs, /cargo|src-tauri|source checkout/i);
+  assert.match(downloads, /Standalone command-line and\s+headless archives are not published yet/);
   assert.doesNotMatch(releases, /sourceUrl/);
   assert.match(downloads, /download/);
   assert.match(verifier, /status.*--porcelain/s);

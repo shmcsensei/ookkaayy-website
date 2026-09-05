@@ -83,6 +83,24 @@ export default function Downloads() {
           );
         })}
       </section>
+      <section className="scope shell" id="cli">
+        <p className="kicker">CLI and headless distributions</p>
+        <h2>Packaged service binaries are coming next.</h2>
+        <p>
+          The downloads above contain the macOS desktop applications. Standalone command-line and
+          headless archives are not published yet, so there is currently no supported public CLI
+          installation. When available, each archive will include one product binary and a matching
+          SHA-256 checksum for macOS, Linux, or Windows.
+        </p>
+        <div className="actions">
+          <Link className="button secondary" href="/docs#install-cli">
+            Preview CLI installation
+          </Link>
+          <Link className="button secondary" href="/docs#content-mcp">
+            Review MCP options
+          </Link>
+        </div>
+      </section>
       <section className="scope shell">
         <p className="kicker">Before you install</p>
         <h2>Early macOS builds.</h2>
