@@ -87,6 +87,7 @@ test('installation and release provenance are actionable and exact', async () =>
   const verifier = await read('scripts/verify-local-releases.mjs');
   assert.doesNotMatch(docs, /cargo|src-tauri|source checkout/i);
   assert.match(downloads, /brew install --cask ookkaayy-content-cli ookkaayy-search-cli ookkaayy-version-cli/);
+  assert.match(downloads, /permits worldwide personal and internal business use/);
   assert.doesNotMatch(downloads, /not published yet|planned tap/i);
   assert.doesNotMatch(releases, /sourceUrl/);
   assert.match(downloads, /download/);

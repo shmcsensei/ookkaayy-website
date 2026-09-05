@@ -143,7 +143,7 @@ export const guides: readonly Guide[] = [
       'Homebrew downloads the versioned binary archive, verifies its checksum, and places the command on PATH',
       'Run doctor, then use --help to see product-specific commands and options',
     ],
-    note: 'The current v0.1.0 CLI Casks support Apple-silicon Macs running macOS 11 or newer. They are ad-hoc signed and not yet notarized.',
+    note: 'The current v0.1.0 CLI Casks support Apple-silicon Macs running macOS 11 or newer. They are ad-hoc signed and not yet notarized. Their included proprietary license permits worldwide personal and internal business use but not redistribution or hosted third-party services.',
   },
   {
     id: 'install-homebrew-apps',

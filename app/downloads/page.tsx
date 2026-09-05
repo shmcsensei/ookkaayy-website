@@ -105,6 +105,11 @@ export default function Downloads() {
           Version 0.1.0 currently supports Apple-silicon Macs running macOS 11 or newer. These early
           CLI binaries are ad-hoc signed and not yet notarized.
         </p>
+        <p>
+          Each archive includes the Ookkaayy Proprietary Software License v1.0. Copyright © 2026
+          Simon Chong. It permits worldwide personal and internal business use; redistribution and
+          hosted third-party service use are not permitted.
+        </p>
         <div className="actions">
           <Link className="button secondary" href="/docs#install-cli">
             Preview CLI installation
